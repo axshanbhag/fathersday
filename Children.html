@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How Well Do You Know the Shanbhags?</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+    body { background:#001e4d; }
+    .app { background:#fff; width:90%; max-width:600px; margin:100px auto; border-radius:10px; padding:30px; }
+    .app h1 { font-size:25px; color:#001e4d; font-weight:600; border-bottom:1px solid #333; padding-bottom:30px; }
+    .quiz { padding:20px 0; }
+    .quiz h2 { font-size:18px; color:#001e4d; font-weight:600; }
+    .btn { background:#fff; color:#222; font-weight:600; width:100%; border:1px solid #222; padding:10px; margin:10px 0; text-align:left; border-radius:4px; cursor:pointer; transition:all .3s; }
+    .btn:hover:not([disabled]) { background:#222; color:#fff; }
+    .btn:disabled { cursor:not-allowed; }
+    #next-btn { background:#001e4d; color:#fff; font-weight:500; width:150px; border:none; padding:10px; margin:20px auto 0; border-radius:4px; cursor:pointer; display:none; }
+    .correct { background:#9aeabc; }
+    .incorrect { background:#ff9393; }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+    }
+    li {
+      float: left;
+    }
+
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      background-color: #111;}
+
+  </style>
+</head>
+<body>
+  <div id="navbar">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="MathProblem.html">Math Problems</a></li>
+    <li><a href="Children.html">How Well Do You Know Us?</a></li>
+    <li><a href="diml.html">The Perfect Day</a></li>
+  </ul>
+  </div>
+  <div class="app">
+    <h1>How Well Do You Know the Shanbhags?</h1>
+    <div class="quiz">
+      <h2 id="question">Question text</h2>
+      <div id="answer-buttons"></div>
+      <button id="next-btn">Next</button>
+    </div>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        question: "What is Arpita's favorite nail design?",
+        answers: [
+          { text: "Red nails", correct: false },
+          { text: "French Tip", correct: true },
+          { text: "Cat Eye", correct: false },
+          { text: "Acrylic", correct: false }
+        ]
+      },
+      {
+        question: "What is Aariv's favorite type of math?",
+        answers: [
+          { text: "Number Theory", correct: false },
+          { text: "Algebra", correct: false },
+          { text: "Logical Puzzles", correct: true },
+          { text: "Problem-Solving", correct: false }
+        ]
+      },
+      {
+        question: "What was Arpita's greaatest and most irrational fear when she was 9 years old?",
+        answers: [
+          { text: "Ghosts and dead people", correct: true },
+          { text: "Spiders and insects", correct: false },
+          { text: "Getting lost in IKEA", correct: false },
+          { text: "Dogs", correct: false }
+        ]
+      },
+      {
+        question: "What is Aariv's favorite XBOX game?",
+        answers: [
+          { text: "Boxing", correct: false },
+          { text: "It Takes Two", correct: false },
+          { text: "Joy Ride Turbo: Racing Game", correct: false },
+          { text: "Roblox", correct: true }
+        ]
+      },
+      {
+        question: "What is Arpita's biggest pet peeve?",
+        answers: [
+          { text: "Aariv in public", correct: true },
+          { text: "If her room is dirty", correct: false },
+          { text: "Amar passing gas", correct: false },
+          { text: "Outgrown nails", correct: false }
+        ]
+      },
+      {
+        question: "What is Aariv's favorite toy?",
+        answers: [
+          { text: "Woody", correct: false },
+          { text: "Buzz Lightyear", correct: false },
+          { text: "Batman", correct: true },
+          { text: "Puppy", correct: false }
+        ]
+      },
+      {
+        question: "What is a TikTok recipe Arpita wants to make?",
+        answers: [
+          { text: "Sub in a Tub", correct: false },
+          { text: "Cottage Cheese, Avocado, Ground Beef, Sweet Potato Bowl", correct: false },
+          { text: "Protein Pancakes", correct: false },
+          { text: "Greek Yogurt Bagels", correct: true }
+        ]
+      },
+      {
+        question: "What is Aariv's favorite movie?",
+        answers: [
+          { text: "Despicable Me", correct: false },
+          { text: "Diary of a Wimpy Kid: Rodrick Rules", correct: true },
+          { text: "Wild Robot", correct: false },
+          { text: "Harry Potter: Deathly Hollows Pt. 2", correct: false }
+        ]
+      },
+      {
+        question: "Who is Arpita's least favorite teacher?",
+        answers: [
+          { text: "Mrs. Barton", correct: false },
+          { text: "Ms. Thompson", correct: false },
+          { text: "Ms. Wienholz", correct: true },
+          { text: "Mr. Baez", correct: false }
+        ]
+      },
+      {
+        question: "Who is Aariv's favorite teacher?",
+        answers: [
+          { text: "Ms. Jones (5th)", correct: true },
+          { text: "Ms. Akbar", correct: false },
+          { text: "Ms. Caundo", correct: false },
+          { text: "Ms. Maher", correct: false }
+        ]
+      },
+      {
+        question: "Who many days are there until the cruise?",
+        answers: [
+          { text: "34", correct: false },
+          { text: "33", correct: false },
+          { text: "35", correct: false },
+          { text: "36", correct: true }
+        ]
+      }
+    ];
+
+    const questionElement = document.getElementById('question');
+    const answerButtons = document.getElementById('answer-buttons');
+    const nextButton = document.getElementById('next-btn');
+
+    let currentQIndex = 0, score = 0;
+
+    function startQuiz() {
+      currentQIndex = 0;
+      score = 0;
+      nextButton.textContent = 'Next';
+      nextButton.style.display = 'none';
+      showQuestion();
+    }
+
+    function showQuestion() {
+      resetState();
+      const current = questions[currentQIndex];
+      questionElement.textContent = current.question;
+      current.answers.forEach(ans => {
+        const btn = document.createElement('button');
+        btn.textContent = ans.text;
+        btn.className = 'btn';
+        if (ans.correct) btn.dataset.correct = ans.correct;
+        btn.addEventListener('click', selectAnswer);
+        answerButtons.appendChild(btn);
+      });
+    }
+
+    function resetState() {
+      nextButton.style.display = 'none';
+      while (answerButtons.firstChild) answerButtons.removeChild(answerButtons.firstChild);
+    }
+
+    function selectAnswer(e) {
+      const selected = e.target;
+      const correct = selected.dataset.correct === 'true';
+      Array.from(answerButtons.children).forEach(btn => {
+        btn.disabled = true;
+        btn.classList.add(btn.dataset.correct === 'true' ? 'correct' : 'incorrect');
+      });
+      if (correct) score++;
+      nextButton.style.display = 'block';
+      nextButton.textContent = currentQIndex < questions.length - 1 ? 'Next' : 'Show Score';
+    }
+
+    nextButton.addEventListener('click', () => {
+      currentQIndex++;
+      if (currentQIndex < questions.length) {
+        showQuestion();
+      } else {
+        showScore();
+      }
+    });
+
+    function showScore() {
+      resetState();
+      questionElement.textContent = `You scored ${score} out of ${questions.length}!`;
+      nextButton.textContent = 'Restart';
+      nextButton.style.display = 'block';
+      nextButton.onclick = startQuiz;
+    }
+
+    startQuiz();
+  </script>
+</body>
+</html>
