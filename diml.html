@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Plan Your Day</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f0f4f8;
+      color: #333;
+      padding: 20px;
+    }
+    .quiz-box {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .question {
+      margin: 20px 0;
+    }
+    .question h3 {
+      margin-bottom: 10px;
+    }
+    .options label {
+      display: block;
+      margin: 8px 0;
+      cursor: pointer;
+    }
+    button {
+      background: #001e4d;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 20px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    #result {
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 18px;
+      background: #e0f7fa;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+    }
+    li {
+      float: left;
+    }
+
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      background-color: #111;}
+  </style>
+</head>
+<body>
+<div id="navbar">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="MathProblem.html">Math Problems</a></li>
+    <li><a href="Children.html">How Well Do You Know Us?</a></li>
+    <li><a href="diml.html">The Perfect Day</a></li>
+  </ul>
+  </div>
+<div class="quiz-box">
+  <h1>What Kind of Father's Day is Best for You?</h1>
+  <form id="quizForm">
+    <div class="question">
+      <h3>1. What's your ideal morning?</h3>
+      <div class="options">
+        <label><input type="radio" name="q1" value="A" required> Homemade protein breakfast with family</label>
+        <label><input type="radio" name="q1" value="B"> Hike or bike ride</label>
+        <label><input type="radio" name="q1" value="C"> Dining at IHOP</label>
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>3. How do you want to spend the afternoon?</h3>
+      <div class="options">
+        <label><input type="radio" name="q3" value="A" required> Finish building Aariv's table</label>
+        <label><input type="radio" name="q3" value="B"> Go to an escape room, Chucky Cheese, and Dave & Busters</label>
+        <label><input type="radio" name="q3" value="C"> Watching a movie with Jamba Juice</label>
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>4. What’s your perfect dinner?</h3>
+      <div class="options">
+        <label><input type="radio" name="q4" value="A" required> A home-cooked family favorite</label>
+        <label><input type="radio" name="q4" value="B"> An expensive restraunt</label>
+        <label><input type="radio" name="q4" value="C"> Takeout and comfort food on the couch</label>
+      </div>
+    </div>
+
+    <button type="submit">See My Father's Day</button>
+  </form>
+
+  <div id="result"></div>
+</div>
+
+<script>
+  document.getElementById('quizForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const answers = ['q1', 'q3', 'q4'].map(q => 
+      document.querySelector(`input[name="${q}"]:checked`).value
+    );
+
+    const count = { A: 0, B: 0, C: 0 };
+    answers.forEach(a => count[a]++);
+
+    let resultText = '';
+    if (count.A >= 2) {
+      resultText = "You're stuck spending the day with only Family! Your ideal Father’s Day includes hugs and food, playing games us, and watching a Disney movie at night.";
+    } else if (count.B >= 2) {
+      resultText = "You want to get some action! For your perfect day, imagine going outisde your comfort zone, or trying Korean BBQ for the first time after a hike. We hope you're pumped!";
+    } else {
+      resultText = "Boring and lazy, but I guess it's okay. No alarms, no plans—just naps, favorite snacks, and quiet time. Just living on the couch and coding while teaching us to code is your favorite thing.";
+    }
+
+    document.getElementById('result').innerHTML = resultText;
+  });
+</script>
+
+</body>
+</html>
